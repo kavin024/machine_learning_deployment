@@ -1,9 +1,20 @@
 from flask import Flask, request, jsonify
 import joblib
 import pandas as pd
-
 # Instantiate the Flask application
 app = Flask(__name__)
+# Load the pre-trained logistic regression model
+model = joblib.load('logistic_regression_model.joblib')
+print("Logistic regression model loaded successfully.")
+# Retrieve and store the exact column names of the features (X.columns)
+# X is already defined from previous steps
+model_features = X.columns
+print("Model features (column names) stored successfully.")
+
+# Re-declare the 'categorical_features' list used during training
+categorical_features = ['metadata/ministry_department', 'metadata/tags/1', 'metadata/tags/2']
+print("Categorical features re-declared successfully.")
+
 
 # Load the pre-trained logistic regression model
 model = joblib.load('logistic_regression_model.joblib')
